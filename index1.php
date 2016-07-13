@@ -29,4 +29,6 @@
 	    function calculate_sum ($argument1, $argument2) {
  			return $argument1 + $argument2;
      	}	
-
+?>
+  </body>
+</html>
