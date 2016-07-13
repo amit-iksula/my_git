@@ -1,0 +1,4 @@
+name = Admin Form
+description = Custom mdodule, for display form only in admin login 
+core = 7.x
+package = Custom

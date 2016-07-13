@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * @file
+ * An example module for how to create form and store user information to session.
+ */
+/**
+ * Implements hook_menu.
+ */
+
+  function crud_form_menu() {
+
+    $items['crud_form/form'] = array(
+      'title' => 'form',
+      'type' => MENU_CALLBACK,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('crud_form_form'),
+      'file' => 'includes/crud_register_form.inc',
+      'access callback' => TRUE
+    );
+
+    $items['crud_form/form/register'] = array(
+      'title' => 'Student Register Form',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => 1,
+    );
+
+    $items['crud_form/form/student-list'] = array(
+      'title' => 'Student Data List',
+      'type' => MENU_LOCAL_TASK,
+      'weight' => 2,
+      'page callback' => 'crud_form_display',
+      'file' => 'includes/crud_form_display.inc',
+      'access callback' => TRUE
+    );
+    $items['crud_form/%/edit'] = array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('form_edit',1),
+      'file' => 'includes/crud_form_edit.inc',
+      'access callback' => TRUE,
+    );
+    $items['crud_form/%/delete'] = array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('delete_record',1),
+      'file' => 'includes/crud_form_delete.inc',
+      'access callback' => TRUE,
+    );
+    return $items;
+  }
+  
+
+
+

@@ -1,0 +1,116 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+function user_form_data_schema() {
+  $schema =array();
+  $schema['save_data'] = array(
+    // Example (partial) specification for table "node".
+    'description' => 'The base table for save_data.',
+    'fields' => array(
+        'user_id' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'first_name' => array(
+          'type' => 'varchar',
+          'length' => 20,
+           'not null' => TRUE,
+        ),
+         'last_name' => array(
+          'type' => 'varchar',
+          'length' => 20,
+           'not null' => TRUE,
+        ),
+         'email' => array(
+          'type' => 'varchar',
+          'length' => 30,
+           'not null' => TRUE,
+        ),
+         'pass' => array(
+          'type' => 'varchar',
+          'length' => 10,
+           'not null' => TRUE,
+        ),
+         'hobby' => array(
+          'type' => 'varchar',
+          'length' => 20,
+        ),
+         'gender' => array(
+          'type' => 'varchar',
+          'length' => 10,
+           'not null' => TRUE,
+        ),
+         'date' => array(
+          'type' => 'int',
+           'length' => 30,
+           'not null' => TRUE,
+        ),
+         'address' => array(
+          'type' => 'varchar',
+          'length' => 100,
+        ),
+         'state' => array(
+          'type' => 'varchar',
+          'length' => 40,
+        ),
+      ),
+    'primary key' => array('user_id'),
+  );
+  return $schema;
+}
+function user_form_data_update_7104() {
+  $schema['professional_info'] = array(
+    // Example (partial) specification for table "node".
+    'description' => 'The base table for professional_data.',
+    'fields' => array(
+        'employee_id' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+      'user_id' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'company_name' => array(
+          'type' => 'varchar',
+          'length' => 20,
+           'not null' => TRUE,
+        ),
+      'designation' => array(
+          'type' => 'varchar',
+          'length' => 20,
+           'not null' => TRUE,
+        ),
+         'department' => array(
+          'type' => 'varchar',
+          'length' => 20,
+           'not null' => TRUE,
+        ),
+         'company_email' => array(
+          'type' => 'varchar',
+          'length' => 30,
+           'not null' => TRUE,
+        ),
+         'joining_date' => array(
+          'type' => 'int',
+           'length' => 30,
+           'not null' => TRUE,
+        ),
+         'company_city' => array(
+          'type' => 'varchar',
+          'length' => 100,
+        ),
+      ),
+    'primary key' => array('employee_id'),
+    'foreign key' => array('user_id'),
+  );
+  db_create_table('professional_info', $schema['professional_info']);
+}
+

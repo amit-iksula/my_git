@@ -1,0 +1,4 @@
+name = Crud Form
+description = Custom mdodule, to store update and delete user information, developed by Yash Khandelwal 
+core = 7.x
+package = Custom

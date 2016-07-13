@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * @file
+ * Demo module, Basic Ajax form submit (Ajax framework).
+ */
+
+ /**
+  * Implements hook_menu().
+  */
+function demo_menu() {
+  return array(
+    'ajax/demo_form' => array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('ajax_demo_form'),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    ),
+  );
+}

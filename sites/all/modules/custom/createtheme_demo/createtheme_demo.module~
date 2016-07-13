@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * @file
+ * Demo module, Basic hook_theme (hook_theme concept).
+ */
+
+ /**
+  * Implements hook_menu().
+  */
+function create_demo_menu() {
+    $items['createtheme/custompage'] = array(
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('createtheme_demo_custompage'),
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+}

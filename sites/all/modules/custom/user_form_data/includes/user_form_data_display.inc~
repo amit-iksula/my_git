@@ -1,0 +1,51 @@
+<?php
+ /**
+  *  function for select all from database table using db_select.
+  */   
+function user_form_data_display2() {
+      $header = array(
+      array('data' => 'User Id' , 'field' => 'user_id'),
+      array('data' => 'First Name' , 'field' => 'first_name'),
+      array('data' => 'Last Name' , 'field' => 'last_name'),
+      array('data' => 'Email' , 'field' => 'email'),
+      array('data' => 'Password' , 'field' => 'pass'),
+      array('data' => 'Hobbies' , 'field' => 'hobby'),
+      array('data' => 'Gender' , 'field' => 'gender'),
+      array('data' => 'DOB' , 'field' => 'date'),
+      array('data' => 'Address' , 'field' => 'address'),
+      array('data' => 'State' , 'field' => 'state'),
+      array('data' => 'Pincode' , 'field' => 'pincode'),
+      );
+
+      $result = db_select('save_data', 'n')
+      ->fields('n')
+      ->extend('PagerDefault')
+      ->limit(2)
+      ->extend('TableSort')
+      ->orderByHeader($header)
+      ->execute();
+      //dpm($result);
+
+     
+     foreach ($result as $key => $value) {
+     $value->date  = format_date($value->date, 'custom', 'j M Y');
+       $rows[] = array(
+        $value->user_id,
+        $value->first_name,
+        $value->last_name,
+        $value->email,
+        $value->pass,
+        $value->hobby,
+        $value->gender,
+        $value->date,
+        $value->address,
+        $value->state,
+        $value->pincode,
+        );
+     }
+      // Format and print out table.
+    
+  $output = theme('table', array('header' => $header, 'rows' => $rows));
+  $output .= theme('pager');
+  return $output;
+}

@@ -1,0 +1,4 @@
+name = Create Hook Theme Demo
+description = Custom module, to learn basics of hook theme.
+core = 7.x
+package = Custom

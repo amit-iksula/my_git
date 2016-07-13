@@ -1,0 +1,4 @@
+name = User Form Data
+description = Custom mdodule, to store user information from form to session, developed by Yash Khandelwal 
+core = 7.x
+package = Custom

@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Demo module, Basic hook_theme (hook_theme concept).
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function createtheme_demo_menu() {
+    $items['createtheme'] = array(
+      'page callback' => 'my_custom_theme_callback',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+    return $items;
+}
+
+function my_custom_theme_callback() {
+    return theme('drupal_practice');
+}
+
+function createtheme_demo_theme() {
+    return array(
+      'drupal_practice' => array(
+        'template' => 'template/custompage',
+        'variables' => array(
+          'title' => 'My Custom Theme',
+          'desc' => 'This is my theme',
+        ),
+      ),
+    );
+}
+
+function createtheme_demo_preprocess_drupal_practice(&$vars) {
+$query = db_select('country','ct');
+$query->join('state','st', 'ct.id = st.country_id');
+$query->join('city','c','st.id = c.state_id');
+$query->groupBy('ct.id');
+$query->groupBy('st.id');
+$query->groupBy('c.id');
+$query->fields('ct', array('country_name'));
+$query->fields('st', array('state_name'));
+$query->fields('c', array('city_name'));
+$result = $query->execute();
+$vars['result'] = $result; 
+}

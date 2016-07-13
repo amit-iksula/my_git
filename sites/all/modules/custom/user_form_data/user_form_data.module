@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * An example module for how to create form and store user information to session.
+ */
+/**
+ * Implements hook_menu.
+ */
+
+  function user_form_data_menu() {
+
+    $items['user_form_data/form'] = array(
+      'title' => 'form',
+      'type' => MENU_CALLBACK,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('user_form_data_form'),
+      'file' => 'includes/user_form_data_form.inc',
+      'access callback' => TRUE
+    );
+
+    $items['user_form_data/form/display1'] = array(
+      'title' => 'form',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => 1,
+    );
+
+    $items['user_form_data/form/display2'] = array(
+      'title' => 'Display Table',
+      'type' => MENU_LOCAL_TASK,
+      'weight' => 2,
+      'page callback' => 'user_form_data_display2',
+      'file' => 'includes/user_form_data_display.inc',
+      'access callback' => TRUE
+    );
+    return $items;
+  }
+  
+
+
+

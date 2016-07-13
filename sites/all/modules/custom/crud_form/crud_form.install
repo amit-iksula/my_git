@@ -1,0 +1,66 @@
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+function crud_form_schema() {
+  $schema =array();
+  $schema['student_info'] = array(
+    // Example (partial) specification for table "node".
+    'description' => 'The base table for student_info.',
+    'fields' => array(
+    	'user_id' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+    	'full_name' => array(
+          'type' => 'varchar',
+          'length' => 30,
+           'not null' => TRUE,
+        ),
+        'email' => array(
+          'type' => 'varchar',
+          'length' => 30,
+           'not null' => TRUE,
+        ),
+        'pass' => array(
+        	'type' => 'varchar',
+        	'length' => 15,
+        	'not null' => TRUE,
+        ),
+        'gender' => array(
+        	'type' => 'varchar',
+        	'length' => 10,
+        ),
+        'dob' => array(
+        	'type' => 'int',
+        	'length' => 30,
+        	'not null' => TRUE,
+        ),
+         'city' => array(
+          'type' => 'varchar',
+          'length' => 30,
+        ),
+         'contact' => array(
+          'type' => 'varchar',
+          'length' => 12,
+        ),
+          'address' => array(
+          'type' => 'varchar',
+          'length' => 100,
+      ),
+      ),
+    'primary key' => array('user_id'),
+  );
+    return $schema;
+}        
+
+//function crud_form_update_7010() {
+//    db_query("UPDATE {field_config} SET type = 'text_long' WHERE field_name = 'field_product_stock_id'");
+//}
+function crud_form_update_7011() {
+    db_query("UPDATE {field_data_field_product_stock_id} SET type = 'longtext' WHERE field_name = 'field_product_stock_weight_value'");
+}

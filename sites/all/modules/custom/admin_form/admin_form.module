@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * @file
+ * An example module for System Setting Form .
+ */
+/**
+ * Implements hook_menu.
+ */
+
+function admin_form_menu() {
+
+    $items['admin_form/form'] = array(
+      'title' => 'form',
+      'type' => MENU_CALLBACK,
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('current_posts_form'),
+      'access callback' => 'user_access',
+      'access arguments' => array('administer users'),
+      'file' => 'includes/admin_system_form.inc',
+    );
+    return $items;
+}    
